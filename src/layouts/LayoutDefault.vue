@@ -31,7 +31,7 @@ export default {
 }
 
 .main {
-  padding-top: 1.5em;
+  padding-top: 2em;
   padding-bottom: 2em;
 }
 </style>

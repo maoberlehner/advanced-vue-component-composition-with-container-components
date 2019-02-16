@@ -14,3 +14,17 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import '~reset-css/sass/reset';
+
+html {
+  text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.3;
+  color: #222;
+  font-family: sans-serif;
+}
+</style>
