@@ -89,6 +89,8 @@ $gap-l: 2em;
 }
 
 .UiMedia__figure {
+  flex-shrink: 0;
+
   &--align-center {
     align-self: center;
   }

@@ -10,21 +10,30 @@
       </p>
     </div>
 
-    <div :class="$style.productTeaser">
+    <div :class="$style.teaser">
       <h2 :class="$style.headline">
         Products
       </h2>
       <ProductTeaserContainer/>
     </div>
+
+    <div :class="$style.teaser">
+      <h2 :class="$style.headline">
+        Articles
+      </h2>
+      <ArticleTeaserContainer/>
+    </div>
   </div>
 </template>
 
 <script>
+import ArticleTeaserContainer from '../components/ArticleTeaserContainer.vue';
 import ProductTeaserContainer from '../components/ProductTeaserContainer.vue';
 
 export default {
   name: `PageHome`,
   components: {
+    ArticleTeaserContainer,
     ProductTeaserContainer,
   },
 };
@@ -45,7 +54,7 @@ export default {
   line-height: 1.2;
 }
 
-.productTeaser {
+.teaser {
   margin-top: 3em;
 }
 </style>

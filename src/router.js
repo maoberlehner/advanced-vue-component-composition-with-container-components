@@ -17,5 +17,10 @@ export default new Router({
       name: `products`,
       component: () => import(`./pages/PageProducts.vue`),
     },
+    {
+      path: `/articles`,
+      name: `articles`,
+      component: () => import(`./pages/PageArticles.vue`),
+    },
   ],
 });

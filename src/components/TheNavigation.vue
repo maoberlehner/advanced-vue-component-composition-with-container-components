@@ -5,6 +5,9 @@
     </router-link> |
     <router-link :to="{ name: `products` }">
       Products
+    </router-link> |
+    <router-link :to="{ name: `articles` }">
+      Articles
     </router-link>
   </nav>
 </template>
