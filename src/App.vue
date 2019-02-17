@@ -27,4 +27,11 @@ body {
   color: #222;
   font-family: sans-serif;
 }
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  vertical-align: middle;
+}
 </style>
