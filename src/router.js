@@ -12,5 +12,10 @@ export default new Router({
       name: `home`,
       component: () => import(`./pages/PageHome.vue`),
     },
+    {
+      path: `/products`,
+      name: `products`,
+      component: () => import(`./pages/PageProducts.vue`),
+    },
   ],
 });

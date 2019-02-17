@@ -1,7 +1,10 @@
 <template>
   <nav :class="$style.wrap">
-    <router-link to="/">
+    <router-link :to="{ name: `home` }">
       Home
+    </router-link> |
+    <router-link :to="{ name: `products` }">
+      Products
     </router-link>
   </nav>
 </template>
