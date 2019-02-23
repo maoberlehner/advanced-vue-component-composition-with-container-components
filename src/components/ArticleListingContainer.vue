@@ -13,7 +13,7 @@
         page: $event.page,
       })"
     >
-      <ListingLayout>
+      <ListingLayout data-qa="article listing">
         <NavFilter
           slot="filter"
           :filters="filters"

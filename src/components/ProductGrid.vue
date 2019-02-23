@@ -1,5 +1,5 @@
 <template>
-  <UiGrid>
+  <UiGrid data-qa="product grid">
     <UiGridItem
       v-for="product in products"
       :key="product.name"

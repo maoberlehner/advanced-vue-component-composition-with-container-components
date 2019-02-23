@@ -8,6 +8,7 @@
       >
         <RouterLink
           :to="filter.id !== `all` ? { query: { filter: filter.id } } : {}"
+          data-qa="filter link"
         >
           {{ filter.name }}
         </RouterLink>
