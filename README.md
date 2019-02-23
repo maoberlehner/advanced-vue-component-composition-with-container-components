@@ -18,7 +18,10 @@ npm run serve
 npm run build
 
 # Run unit tests.
-yarn run test:unit
+npm run test:unit
+
+# Run acceptance tests.
+npm run test:acceptance
 ```
 
 ## About
