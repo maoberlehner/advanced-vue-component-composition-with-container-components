@@ -4,6 +4,7 @@
       v-for="product in products"
       :key="product.name"
       :width="[`12/12`, `4/12@m`]"
+      data-qa="product"
     >
       <ProductCard
         :img="product.img"

@@ -4,7 +4,10 @@
     :endpoint="endpoint"
     immediate
   >
-    <ArticleGrid :articles="articles"/>
+    <ArticleGrid
+      :articles="articles"
+      data-qa="article teaser"
+    />
   </FrameApi>
 </template>
 

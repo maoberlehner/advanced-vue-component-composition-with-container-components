@@ -4,6 +4,7 @@
       v-for="article in articles"
       :key="article.name"
       :width="[`12/12`]"
+      data-qa="article"
     >
       <ArticleSnippet
         :img="article.img"

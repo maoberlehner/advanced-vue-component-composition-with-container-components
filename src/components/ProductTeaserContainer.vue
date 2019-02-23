@@ -4,7 +4,10 @@
     :endpoint="endpoint"
     immediate
   >
-    <ProductGrid :products="products"/>
+    <ProductGrid
+      :products="products"
+      data-qa="product teaser"
+    />
   </FrameApi>
 </template>
 
