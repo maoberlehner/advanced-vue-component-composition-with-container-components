@@ -9,16 +9,22 @@
     <div :class="$style.listing">
       <ArticleListingContainer/>
     </div>
+
+    <div :class="$style.teaser">
+      <ProductTeaserContainer/>
+    </div>
   </div>
 </template>
 
 <script>
 import ArticleListingContainer from '../components/ArticleListingContainer.vue';
+import ProductTeaserContainer from '../components/ProductTeaserContainer.vue';
 
 export default {
   name: `PageProducts`,
   components: {
     ArticleListingContainer,
+    ProductTeaserContainer,
   },
 };
 </script>
@@ -38,7 +44,8 @@ export default {
   line-height: 1.2;
 }
 
-.listing {
+.listing,
+.teaser {
   margin-top: 3em;
 }
 </style>
