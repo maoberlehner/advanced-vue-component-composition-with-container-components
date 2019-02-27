@@ -1,8 +1,5 @@
 module.exports = {
   root: true,
-  env: {
-    'cypress/globals': true,
-  },
   extends: [
     `plugin:vue/recommended`,
     `@avalanche/eslint-config`,
@@ -23,7 +20,4 @@ module.exports = {
   parserOptions: {
     parser: `babel-eslint`,
   },
-  plugins: [
-    `cypress`,
-  ],
 };

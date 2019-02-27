@@ -2,10 +2,9 @@ const glob = require(`glob`);
 
 const componentNameFromSpec = spec => spec.split(`/`).reverse()[0].replace(/\..*?\.js/, ``);
 
-const integrationTestMode = process.argv.includes(`--integration-test`);
 let pages;
 
-if (integrationTestMode) {
+if (process.env.TEST_MODE === `integration`) {
   const integrationSpecs = glob.sync(`./src/**/*.integration.js`);
   pages = integrationSpecs.reduce((prev, spec) => {
     const name = componentNameFromSpec(spec);
@@ -17,6 +16,6 @@ if (integrationTestMode) {
 }
 
 module.exports = {
-  pages,
   lintOnSave: false,
+  pages,
 };

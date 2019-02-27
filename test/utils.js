@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 const SERVE_MODE = !global.describe;
-const TEST_MODE = !SERVE_MODE && Cypress.env(`mode`);
+const TEST_MODE = !SERVE_MODE && process.env.TEST_MODE;
 
 export const setup = SERVE_MODE ? cb => cb() : () => {};
 
@@ -20,3 +20,25 @@ export const run = (cb) => {
 
   return cb;
 };
+
+export const find = async (selector) => {
+  await page.waitForSelector(selector);
+  return page.$(selector);
+};
+
+export const findAll = async (selector) => {
+  await page.waitForSelector(selector);
+  return page.$$(selector);
+};
+
+export const containsText = async (text, wrapperSelector) => {
+  const textSelector = `//text()[contains(.,'${text}')]`;
+  const wrapper = wrapperSelector ? await find(wrapperSelector) : page;
+
+  await page.waitForXPath(textSelector);
+  const matches = await wrapper.$x(textSelector);
+
+  return matches.length > 0;
+};
+
+export const open = url => page.goto(`http://localhost:8080${url}`);

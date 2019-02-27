@@ -1,4 +1,11 @@
-import { mount, run, setup } from '../../test/utils';
+import {
+  containsText,
+  find,
+  mount,
+  open,
+  run,
+  setup,
+} from '../../test/utils';
 import router from '../router';
 
 setup(() => {
@@ -6,38 +13,37 @@ setup(() => {
   mount(ProductListingContainer, { router });
 });
 
-export default run(({ url = `ProductListingContainer` }) => {
+export default run(({ url = `/ProductListingContainer` }) => {
   describe(`Product listing`, () => {
-    const container = () => cy.get(`[data-qa="product listing"]`);
-    const grid = () => container().find(`[data-qa="product grid"]`);
+    const component = `[data-qa="product listing"]`;
+    const findInComponent = selector => find(`${component} ${selector}`);
+    const componentContainsText = text => containsText(text, component);
 
-    it(`should filter products by category when a filter is clicked.`, () => {
-      cy.visit(url);
+    test(`It should filter products by category when a filter is clicked.`, async () => {
+      await open(url);
 
-      container()
-        .find(`[data-qa="filter link"]`)
-        .eq(2)
-        .click();
-      grid().contains(`Plant`);
+      const plantFilter = await findInComponent(`:nth-child(3) > [data-qa="filter link"]`);
+      await plantFilter.click();
 
-      container()
-        .find(`[data-qa="filter link"]`)
-        .eq(1)
-        .click();
-      grid().contains(`Nice Watch`);
-      grid().contains(`Headphones`);
-      grid().contains(`Camera`);
+      expect(await componentContainsText(`Plant`)).toBe(true);
+
+      const electronicsFilter = await findInComponent(`:nth-child(2) > [data-qa="filter link"]`);
+      await electronicsFilter.click();
+
+      expect(await componentContainsText(`Nice Watch`)).toBe(true);
+      expect(await componentContainsText(`Headphones`)).toBe(true);
+      expect(await componentContainsText(`Camera`)).toBe(true);
     });
 
-    it(`should open the next page when the next page link is clicked.`, () => {
-      cy.visit(url);
+    test(`It should open the next page when the next page link is clicked.`, async () => {
+      await open(url);
 
-      container()
-        .find(`a[data-qa="next page link"]`)
-        .click();
-      grid().contains(`Shoes`);
-      grid().contains(`Camera`);
-      grid().contains(`Plant`);
+      const nextPageLInk = await findInComponent(`a[data-qa="next page link"]`);
+      await nextPageLInk.click();
+
+      expect(await componentContainsText(`Shoes`)).toBe(true);
+      expect(await componentContainsText(`Camera`)).toBe(true);
+      expect(await componentContainsText(`Plant`)).toBe(true);
     });
   });
 });

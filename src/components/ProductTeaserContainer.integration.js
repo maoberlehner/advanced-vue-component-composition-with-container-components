@@ -1,17 +1,27 @@
-import { mount, run, setup } from '../../test/utils';
+import {
+  findAll,
+  mount,
+  open,
+  run,
+  setup,
+} from '../../test/utils';
 
 setup(() => {
   const ProductTeaserContainer = () => import(`./ProductTeaserContainer.vue`);
   mount(ProductTeaserContainer);
 });
 
-export default run(({ url = `ProductTeaserContainer` }) => {
+export default run(({ url = `/ProductTeaserContainer` }) => {
   describe(`Product teaser`, () => {
-    it(`should render three products.`, () => {
-      cy.visit(url);
-      cy.get(`[data-qa="product teaser"]`)
-        .find(`[data-qa="product"]`)
-        .should(`have.length`, 3);
+    const component = `[data-qa="product teaser"]`;
+    const findAllInComponent = selector => findAll(`${component} ${selector}`);
+
+    test(`It should render three products.`, async () => {
+      await open(url);
+
+      const products = await findAllInComponent(`[data-qa="product"]`);
+
+      expect(products.length).toBe(3);
     });
   });
 });
