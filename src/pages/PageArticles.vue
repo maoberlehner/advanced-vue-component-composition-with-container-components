@@ -21,7 +21,7 @@ import ArticleListingContainer from '../components/ArticleListingContainer.vue';
 import ProductTeaserContainer from '../components/ProductTeaserContainer.vue';
 
 export default {
-  name: `PageProducts`,
+  name: `PageArticles`,
   components: {
     ArticleListingContainer,
     ProductTeaserContainer,
